@@ -30,13 +30,17 @@ describe("Phase 1 - Hash table implementation", function () {
     hashTable.insert("key2", "value2");
     hashTable.insert("key3", "value3");
 
-    expect(hashTable.data[2].key).to.equal("key1");
-    expect(hashTable.data[3].key).to.equal("key2");
-    expect(hashTable.data[0].key).to.equal("key3");
+    const data2 = hashTable.data[2]!;
+    const data3 = hashTable.data[3]!;
+    const data0 = hashTable.data[0]!;
 
-    expect(hashTable.data[2].value).to.equal("value1");
-    expect(hashTable.data[3].value).to.equal("value2");
-    expect(hashTable.data[0].value).to.equal("value3");
+    expect(data2.key).to.equal("key1");
+    expect(data3.key).to.equal("key2");
+    expect(data0.key).to.equal("key3");
+
+    expect(data2.value).to.equal("value1");
+    expect(data3.value).to.equal("value2");
+    expect(data0.value).to.equal("value3");
 
     expect(hashTable.count).to.equal(3);
   });
@@ -47,11 +51,13 @@ describe("Phase 1 - Hash table implementation", function () {
     hashTable.insert("key2", "value2");
     hashTable.insert("key4", "value4");
 
-    expect(hashTable.data[1].next.key).to.equal("key2");
-    expect(hashTable.data[1].key).to.equal("key4");
+    const data1 = hashTable.data[1]!;
 
-    expect(hashTable.data[1].next.value).to.equal("value2");
-    expect(hashTable.data[1].value).to.equal("value4");
+    expect(data1.next!.key).to.equal("key2");
+    expect(data1.key).to.equal("key4");
+
+    expect(data1.next!.value).to.equal("value2");
+    expect(data1.value).to.equal("value4");
   });
 
   it("can insert and handle same key, value updates", function () {
@@ -61,17 +67,20 @@ describe("Phase 1 - Hash table implementation", function () {
     hashTable.insert("key13", "value13");
     hashTable.insert("key19", "value19");
 
-    expect(hashTable.data[3].key).to.equal("key19");
-    expect(hashTable.data[3].value).to.equal("value19");
-    expect(hashTable.data[3].next.key).to.equal("key13");
-    expect(hashTable.data[3].next.value).to.equal("value13");
-    expect(hashTable.data[3].next.next.key).to.equal("key4");
-    expect(hashTable.data[3].next.next.value).to.equal("value4");
+    let data3 = hashTable.data[3]!;
+
+    expect(data3.key).to.equal("key19");
+    expect(data3.value).to.equal("value19");
+    expect(data3.next!.key).to.equal("key13");
+    expect(data3.next!.value).to.equal("value13");
+    expect(data3.next!.next!.key).to.equal("key4");
+    expect(data3.next!.next!.value).to.equal("value4");
 
     hashTable.insert("key13", "value20000");
+    data3 = hashTable.data[3]!;
 
-    expect(hashTable.data[3].next.key).to.equal("key13");
-    expect(hashTable.data[3].next.value).to.equal("value20000");
+    expect(data3.next!.key).to.equal("key13");
+    expect(data3.next!.value).to.equal("value20000");
   });
 
   it("can read an inserted key/value pair", function () {
