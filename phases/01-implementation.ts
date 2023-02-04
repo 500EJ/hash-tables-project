@@ -12,10 +12,14 @@ class KeyValuePair {
 
 class HashTable {
   // get O(1), set O(1), deleteKey O(1)
+  capacity: number;
+  data: Array<KeyValuePair | null>;
+  count: number;
 
   constructor(numBuckets = 8) {
-    // Initialize your buckets here
-    // Your code here
+    this.capacity = numBuckets;
+    this.data = new Array(this.capacity).fill(null);
+    this.count = 0;
   }
 
   hash(key) {
