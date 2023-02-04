@@ -1,0 +1,30 @@
+{
+  "name": "hash-tables",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appacademy-starters/data-structures-hash-tables-starter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/appacademy-starters/data-structures-hash-tables-starter/issues"
+  },
+  "homepage": "https://github.com/appacademy-starters/data-structures-hash-tables-starter#readme",
+  "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/mocha": "^10.0.1",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "trailingComma": "none"
+  },
+  "type": "module"
+}
