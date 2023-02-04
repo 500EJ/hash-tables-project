@@ -22,7 +22,7 @@ class HashTable {
     this.count = 0;
   }
 
-  hash(key) {
+  hash(key: string): number {
     let hashValue = 0;
 
     for (let i = 0; i < key.length; i++) {
@@ -32,7 +32,7 @@ class HashTable {
     return hashValue;
   }
 
-  hashMod(key) {
+  hashMod(key: string): number {
     // Get index after hashing
     return this.hash(key) % this.capacity;
   }
