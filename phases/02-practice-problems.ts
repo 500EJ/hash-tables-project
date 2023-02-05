@@ -28,15 +28,16 @@ export function commonElements(arr1: number[], arr2: number[]): number[] {
 }
 
 export function duplicate(arr: number[]): number {
-  const set = new Set();
+  const set = new Set<number>();
   for (let i = 0; i < arr.length; i++) {
-    if (set.has(arr[i])) return arr[i];
-    set.add(arr[i]);
+    const n = arr[i]!;
+    if (set.has(n)) return n;
+    set.add(n);
   }
   throw new Error("No duplicate found");
 }
 
-export function twoSum(nums, target) {
+export function twoSum(nums: number[], target: number): boolean {
   // Your code here
 }
 
