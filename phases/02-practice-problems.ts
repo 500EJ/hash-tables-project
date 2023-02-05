@@ -68,6 +68,21 @@ export function twoSum(nums: number[], target: number): boolean {
   return false;
 }
 
-export function wordPattern(pattern, strings) {
-  // Your code here
+export function wordPattern(pattern: string, strings: string[]): boolean {
+  const object: Record<string, string> = {};
+  const chars = new Set<string>();
+  for (let i = 0; i < pattern.length; i++) {
+    const [char, word] = [pattern[i], strings[i]];
+    if (!char || !word) return false;
+    if (
+      (object[word] && char !== object[word]) ||
+      (!object[word] && chars.has(char))
+    ) {
+      return false;
+    } else if (!object[word] && !chars.has(char)) {
+      object[word] = char;
+      chars.add(char);
+    }
+  }
+  return true;
 }
