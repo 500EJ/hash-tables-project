@@ -1,11 +1,13 @@
 function stringToObject(str: string): Record<string, number> {
   const object: Record<string, number> = {};
   for (let i = 0; i < str.length; i++) {
-    const char = str[i]!;
-    if (object[char] == undefined) {
-      object[char] = 0;
-    } else {
-      object[char]++;
+    const char = str[i];
+    if (char !== undefined) {
+      if (object[char] == undefined) {
+        object[char] = 0;
+      } else {
+        object[char]++;
+      }
     }
   }
   return object;
@@ -30,15 +32,40 @@ export function commonElements(arr1: number[], arr2: number[]): number[] {
 export function duplicate(arr: number[]): number {
   const set = new Set<number>();
   for (let i = 0; i < arr.length; i++) {
-    const n = arr[i]!;
-    if (set.has(n)) return n;
-    set.add(n);
+    const n = arr[i];
+    if (n !== undefined) {
+      if (set.has(n)) return n;
+      set.add(n);
+    }
   }
   throw new Error("No duplicate found");
 }
 
 export function twoSum(nums: number[], target: number): boolean {
-  // Your code here
+  const numbers: Record<number, number> = {};
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    if (num !== undefined) {
+      if (numbers[num]) {
+        numbers[num]++;
+      } else {
+        numbers[num] = 1;
+      }
+    }
+  }
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    if (num !== undefined) {
+      const targetNumber = numbers[target - num];
+      if (
+        targetNumber &&
+        ((target - num === num && targetNumber >= 2) || target - num !== num)
+      ) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 export function wordPattern(pattern, strings) {
