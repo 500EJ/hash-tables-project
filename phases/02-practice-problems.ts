@@ -23,12 +23,17 @@ export function anagrams(str1: string, str2: string): boolean {
 export function commonElements(arr1: number[], arr2: number[]): number[] {
   const [set1, set2] = [new Set(arr1), new Set(arr2)];
   const numbers: number[] = [];
-  set1.forEach(n => if (set2.has(n)) numbers.push(n))
+  set1.forEach(n => set2.has(n) && numbers.push(n));
   return numbers;
 }
 
-export function duplicate(arr) {
-  // Your code here
+export function duplicate(arr: number[]): number {
+  const set = new Set();
+  for (let i = 0; i < arr.length; i++) {
+    if (set.has(arr[i])) return arr[i];
+    set.add(arr[i]);
+  }
+  throw new Error("No duplicate found");
 }
 
 export function twoSum(nums, target) {
